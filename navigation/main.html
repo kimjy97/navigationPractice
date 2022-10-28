@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>Document</title>
+    <style>
+
+        /*   공통사항   */
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+            --nav_height: 70px;
+            --nav_contents_width: 600px;
+        }
+        body {
+            background-color: #222222;
+        }
+        li {
+            float: left;
+            list-style: none;
+        }
+        header {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: rgb(185, 0, 0);
+            color: yellow;
+            font-size: 15px;
+            font-weight: bolder;
+            margin-bottom: 20px;
+        }
+        footer {
+            width: 100%;
+            height: 600px;
+        }
+        section {
+            display: flex;
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+            border: 1px solid #444444;
+            border-radius: 7px;
+            background-color: rgb(243, 243, 243);
+            resize: both;
+            overflow: auto;
+            flex-direction: column;
+        }
+        .section_name {
+            top: -28px;
+            padding: 15px;
+            text-align: center;
+            font-size: 15px;
+            color: white;
+        }
+        .section_name > b {
+            margin-right: 5px;
+            color: rgb(162, 162, 255);
+        }
+        .logo {
+            float: left;
+            line-height: var(--nav_height);
+            font-size: 30px;
+            font-weight: bolder;
+            color: rgb(70, 70, 70);
+            cursor: pointer;
+        }
+    
+        .menu {
+            height: 100%;
+            float: right;
+            line-height: var(--nav_height);
+            color:rgb(50, 50, 50);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        .menu li {
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .menu li:hover {
+            background-color: #c2c2c2;
+            transition: 500ms;
+        }
+
+        /*   일반 네비게이션   */
+
+        .nav_wrap {
+            width: 100%;
+            height: var(--nav_height);
+            padding: 0 10px;
+            background-color: rgb(214, 214, 214);
+        }
+        .nav_container {
+            width: var(--nav_contents_width);
+            height: 100%;
+            margin: 0 auto;
+        }
+        .contents_wrap {
+            width: var(--nav_contents_width);
+            margin: 0 auto;
+            padding: 15px 5px;
+            flex : 1; /*반응형 속성: 나머지 채우기*/
+        }
+        .contents_container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            color:rgb(120, 120, 120);
+        }
+
+        /*   반응형 네비게이션   */
+
+        .rnav_wrap {
+            width: 100%;
+            height: var(--nav_height);
+            padding: 0 10px;
+            background-color: rgb(214, 214, 214);
+        }
+        .rnav_container {
+            width: 100%;
+            max-width: var(--nav_contents_width);
+            height: 100%;
+            margin: 0 auto;
+        }
+        .rcontents_wrap {
+            width: 100%;
+            max-width: var(--nav_contents_width);
+            margin: 0 auto;
+            padding: 15px 5px;
+            flex : 1; /*반응형 속성: 나머지 채우기*/
+        }
+        .rcontents_container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            color:rgb(120, 120, 120);
+        }
+        
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <header># 반응형 네비게이션 연습</header>
+    <p class="section_name"><b>Navigation 1</b> 일반 네비게이션 - contents : 600px</p>
+    <section class="nav1_section">
+        <div class="nav_wrap">
+            <div class="nav_container">
+                <div class="logo">LOGO</div>
+                <div class="menu">
+                    <ul>
+                        <li>MENU1</li>
+                        <li>MENU2</li>
+                        <li>MENU3</li>
+                        <li>MENU4</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contents_wrap">
+            <div class="contents_container">
+                &lt-------------------- CONTENTS -------------------->
+            </div>
+        </div>
+    </section>
+
+    <p class="section_name"><b>Navigation 2</b> 반응형 네비게이션 - contents : 600px</p>
+    <section class="nav2_section">
+        <div class="rnav_wrap">
+            <div class="rnav_container">
+                <div class="logo">LOGO</div>
+                <div class="menu">
+                    <ul>
+                        <li>MENU1</li>
+                        <li>MENU2</li>
+                        <li>MENU3</li>
+                        <li>MENU4</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rcontents_wrap">
+            <div class="rcontents_container">
+                CONTENTS
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+</body>
+</html>
