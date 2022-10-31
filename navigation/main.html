@@ -26,6 +26,9 @@
             list-style: none;
         }
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 30px;
             line-height: 30px;
@@ -35,6 +38,7 @@
             font-size: 15px;
             font-weight: bolder;
             margin-bottom: 20px;
+            z-index: 1001;
         }
         footer {
             width: 100%;
@@ -48,16 +52,27 @@
             font-weight: bolder;
             letter-spacing: 10px;
         }
+        .project_purpose {
+            color: white;
+            max-width: 800px;
+            width: 100%;
+            margin: 50px auto;
+            padding: 0 50px;
+            padding-top: 60px;
+            text-align: center;
+            font-size: 20px;
+            word-break: keep-all;
+        }
         section {
             display: flex;
             max-width: 100%;
             width: 800px;
             height: 500px;
             margin: 0 auto;
-            margin-bottom: 50px;
             border: 1px solid #444444;
             border-radius: 7px;
             background-color: rgb(243, 243, 243);
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
             resize: both;
             overflow: auto;
             flex-direction: column;
@@ -65,6 +80,7 @@
         .section_name {
             top: -28px;
             padding: 15px;
+            margin-top: 100px;
             text-align: center;
             font-size: 15px;
             color: white;
@@ -90,19 +106,29 @@
             font-size: 16px;
             letter-spacing: 1px;
         }
-        .menu li {
+        .menu > ul > li> .menu_name {
             padding: 0 10px;
+            z-index: 1001;
             cursor: pointer;
         }
-        .menu li:hover {
-            background-color: #c2c2c2;
+        .menu > ul > li > .menu_name:hover {
+            background-color: #cfcfcf;
             color: black;
-            transition: 500ms;
+        }
+        .menu > ul > li:hover .dropmenu {
+            display: block;
+            background-color: #cfcfcf;
+        }
+        .menu > ul > li:hover .rdropmenu {
+            display: block;
+            background-color: #cfcfcf;
         }
 
-        /*   일반 네비게이션   */
+
+        /*   일반 내비게이션   */
 
         .nav_wrap {
+            position: relative;
             width: 100%;
             height: var(--nav_height);
             padding: 0 10px;
@@ -112,6 +138,28 @@
             width: var(--nav_contents_width);
             height: 100%;
             margin: 0 auto;
+        }
+        .dropmenu {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            left: 0;
+            display: none;
+            background-color: rgb(214, 214, 214);
+        }
+        .dropmenu ul{
+            display: flex;
+            width: var(--nav_contents_width);
+            margin: 0 auto;
+            line-height: 60px;
+            justify-content: space-evenly;
+        }
+        .dropmenu ul > li{
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .dropmenu > ul > li:hover {
+            background-color: #c2c2c2;
         }
         .contents_wrap {
             width: var(--nav_contents_width);
@@ -134,9 +182,10 @@
             color: rgb(30, 30, 30);
         }
 
-        /*   반응형 네비게이션   */
+        /*   반응형 내비게이션   */
 
         .rnav_wrap {
+            position: relative;
             width: 100%;
             height: var(--nav_height);
             padding: 0 10px;
@@ -147,6 +196,30 @@
             max-width: var(--nav_contents_width);
             height: 100%;
             margin: 0 auto;
+            overflow: hidden;
+        }
+        .rdropmenu {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            left: 0;
+            display: none;
+            background-color: rgb(214, 214, 214);
+        }
+        .rdropmenu ul{
+            display: flex;
+            width: 100%;
+            max-width: var(--nav_contents_width);
+            margin: 0 auto;
+            line-height: 60px;
+            justify-content: space-evenly;
+        }
+        .rdropmenu ul > li{
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .rdropmenu > ul > li:hover {
+            background-color: #c2c2c2;
         }
         .rcontents_wrap {
             width: 100%;
@@ -176,18 +249,59 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-    <header># 반응형 네비게이션 연습</header>
-    <p class="section_name"><b>Navigation 1</b> 일반 네비게이션 - contents : 600px</p>
+    <header># 반응형 내비게이션 연습</header>
+    <p class="project_purpose">일반 내비게이션과 반응형 내비게이션을 만들어보고 차이를 비교하며 <b>position 속성</b>과 <b>display 속성</b>을 이해 및 숙달하였다.</p>
+    <p class="section_name"><b>Navigation 1</b> 일반 내비게이션 - contents : 600px</p>
     <section class="nav1_section">
         <div class="nav_wrap">
             <div class="nav_container">
                 <div class="logo">LOGO</div>
                 <div class="menu">
                     <ul>
-                        <li>MENU1</li>
-                        <li>MENU2</li>
-                        <li>MENU3</li>
-                        <li>MENU4</li>
+                        <li>
+                            <div class="menu_name">MENU1</div>
+                            <div class="dropmenu">
+                                <ul>
+                                    <li>menu1-1</li>
+                                    <li>menu1-2</li>
+                                    <li>menu1-3</li>
+                                    <li>menu1-4</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu_name">MENU2</div>
+                            <div class="dropmenu">
+                                <ul>
+                                    <li>menu2-1</li>
+                                    <li>menu2-2</li>
+                                    <li>menu2-3</li>
+                                    <li>menu2-4</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu_name">MENU3</div>
+                            <div class="dropmenu">
+                                <ul>
+                                    <li>menu3-1</li>
+                                    <li>menu3-2</li>
+                                    <li>menu3-3</li>
+                                    <li>menu3-4</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu_name">MENU4</div>
+                            <div class="dropmenu">
+                                <ul>
+                                    <li>menu4-1</li>
+                                    <li>menu4-2</li>
+                                    <li>menu4-3</li>
+                                    <li>menu4-4</li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -199,17 +313,57 @@
         </div>
     </section>
 
-    <p class="section_name"><b>Navigation 2</b> 반응형 네비게이션 - contents : 600px</p>
+    <p class="section_name"><b>Navigation 2</b> 반응형 내비게이션 - contents : 600px</p>
     <section class="nav2_section">
         <div class="rnav_wrap">
             <div class="rnav_container">
                 <div class="logo">LOGO</div>
                 <div class="menu">
                     <ul>
-                        <li>MENU1</li>
-                        <li>MENU2</li>
-                        <li>MENU3</li>
-                        <li>MENU4</li>
+                        <li>
+                            <div class="menu_name">MENU1</div>
+                            <div class="rdropmenu">
+                                <ul>
+                                    <li>menu1-1</li>
+                                    <li>menu1-2</li>
+                                    <li>menu1-3</li>
+                                    <li>menu1-4</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu_name">MENU2</div>
+                            <div class="rdropmenu">
+                                <ul>
+                                    <li>menu2-1</li>
+                                    <li>menu2-2</li>
+                                    <li>menu2-3</li>
+                                    <li>menu2-4</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu_name">MENU3</div>
+                            <div class="rdropmenu">
+                                <ul>
+                                    <li>menu3-1</li>
+                                    <li>menu3-2</li>
+                                    <li>menu3-3</li>
+                                    <li>menu3-4</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu_name">MENU4</div>
+                            <div class="rdropmenu">
+                                <ul>
+                                    <li>menu4-1</li>
+                                    <li>menu4-2</li>
+                                    <li>menu4-3</li>
+                                    <li>menu4-4</li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
